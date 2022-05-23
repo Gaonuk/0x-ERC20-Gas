@@ -1,0 +1,18 @@
+cache/
+out/
+
+node_modules
+.env
+coverage
+coverage.json
+typechain
+
+#Hardhat files
+cache
+artifacts
+
+# Ignore all vscode settings
+.vscode/
+.editorconfig
+lib/
+deployments/

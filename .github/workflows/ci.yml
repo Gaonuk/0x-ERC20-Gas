@@ -1,0 +1,37 @@
+name: Tests
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Install node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Clone repo with submodules
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Install dependencies
+        run: make
+
+      - name: Show Foundry config
+        run: forge config
+        
+      - name: Check contracts are linted
+        run: npm run lint
+
+      - name: Run tests
+        run: FOUNDRY_PROFILE=ci npm run tester
