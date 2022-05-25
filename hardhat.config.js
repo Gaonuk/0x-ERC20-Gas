@@ -21,8 +21,12 @@ module.exports = {
   networks: {
     rinkeby: {
       url: `https://eth-rinkeby.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`,
-      accounts: [`${process.env.RINKEBY_PRIVATE_KEY}`],
+      accounts: [`${process.env.PRIVATE_KEY}`],
     },
+    ropsten: {
+      url: `https://eth-ropsten.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`,
+      accounts: [`${process.env.PRIVATE_KEY}`],
+    }
   },
   namedAccounts: { deployer: 0 },
 };
